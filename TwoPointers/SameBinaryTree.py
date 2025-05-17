@@ -9,10 +9,9 @@
 
 class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
-        if not p and not q: return True
-        elif not p or not q: return False
+        if not p or not q:
+            return p is q
         else:
-            cond1 =  p.val == q.val 
-            cond2 = self.isSameTree(p.left, q.left)
-            cond3 = self.isSameTree(p.right, q.right)
-            return cond1 and cond2 and cond3
+            return  p.val == q.val 
+            and self.isSameTree(p.left, q.left)
+            and self.isSameTree(p.right, q.right)
